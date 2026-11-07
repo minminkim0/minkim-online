@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jeongmin Kim</title>
+<meta name="description" content="Jeongmin Kim — International Trade & Supply Chain, Synthetic Rubber and Chemicals">
+
+<!-- 폰트: 영문 Plus Jakarta Sans + 한글 Pretendard -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+<style>
+/* =========================================================
+   1. 컬러 시스템 — "에어리 스카이" (6 : 3 : 1)
+   여기 값만 바꾸면 사이트 전체 색이 바뀝니다.
+   ========================================================= */
+:root {
+  --base:      #FCFDFE;  /* 60% 메인: 퓨어 화이트 (배경) */
+  --base-2:    #E8F0F7;  /*   └ 연한 하늘색 (테두리, 구분선, 태그 배경) */
+  --base-3:    #F3F7FB;  /*   └ 섹션 교차 배경 */
+  --sub:       #3D4F63;  /* 30% 서브: 슬레이트 (제목, 진한 섹션) */
+  --sub-soft:  #55657A;  /*   └ 본문 글씨 */
+  --sub-mute:  #8B98A8;  /*   └ 보조 글씨 (날짜, 설명) */
+  --accent:    #2491D1;  /* 10% 포인트: 스카이 블루 (버튼, 큰 강조) */
+  --accent-tx: #1A78B0;  /*   └ 작은 글씨용 진한 스카이 블루 (가독성) */
+  --accent-lt: #9AD4F5;  /*   └ 어두운 배경 위에서 쓰는 밝은 하늘색 */
+
+  --radius: 16px;
+  --maxw: 1120px;
+  --font: "Plus Jakarta Sans", "Pretendard", -apple-system, sans-serif;
+}
+
+/* =========================================================
+   2. 기본 설정
+   ========================================================= */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--base); color: var(--sub-soft);
+  font-family: var(--font); font-size: 16px; line-height: 1.7;
+}
+h1, h2, h3, h4 { color: var(--sub); line-height: 1.2; margin: 0; font-weight: 800; letter-spacing: -.03em; }
+a { color: inherit; text-decoration: none; }
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+section { padding: 100px 0; }
+.alt { background: var(--base-3); }
+
+.eyebrow {
+  display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--accent-tx); margin-bottom: 12px;
+}
+.section-title { font-size: clamp(30px, 4vw, 42px); margin-bottom: 16px; }
+.section-lead { max-width: 680px; font-size: 17px; margin: 0 0 48px; }
+
+/* =========================================================
+   3. 내비게이션
+   ========================================================= */
+.nav {
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(252, 253, 254, .85); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--base-2);
+}
+.nav .container { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.logo { font-weight: 800; font-size: 21px; color: var(--sub); letter-spacing: -.03em; }
+.logo span { color: var(--accent); }
+.nav ul { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; font-size: 14px; font-weight: 600; }
+.nav ul a { color: var(--sub-soft); transition: color .2s; }
+.nav ul a:hover { color: var(--accent-tx); }
+
+/* =========================================================
+   4. Hero
+   ========================================================= */
+.hero { padding: 110px 0 120px; position: relative; overflow: hidden; }
+.hero::before { /* 은은한 하늘색 빛 번짐 */
+  content: ""; position: absolute; width: 720px; height: 720px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(154, 212, 245, .45), transparent 65%);
+  top: -260px; right: -200px; z-index: -1;
+}
+.hero { isolation: isolate; }
+.hero .container { display: grid; grid-template-columns: 1.35fr 1fr; gap: 56px; align-items: center; }
+.hero h1 { font-size: clamp(44px, 7vw, 76px); margin: 8px 0 22px; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero .lead { font-size: 19px; max-width: 560px; margin: 0 0 36px; }
+.btns { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn {
+  display: inline-block; padding: 14px 28px; border-radius: 999px;
+  font-weight: 700; font-size: 15px; transition: transform .2s, box-shadow .2s, background .2s, color .2s;
+}
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(36, 145, 209, .3); }
+.btn-ghost { border: 1.5px solid var(--sub); color: var(--sub); }
+.btn-ghost:hover { background: var(--sub); color: var(--base); }
+
+.portrait { /* 아치형 사진 틀: 폭 360px, 콘텐츠 오른쪽 끝에 맞춤 */
+  width: 100%; max-width: 360px; justify-self: end;
+  aspect-ratio: 4 / 5; border-radius: 180px 180px var(--radius) var(--radius);
+  background: var(--base-2); overflow: hidden;
+}
+.portrait img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* =========================================================
+   5. 핵심 숫자 띠 (Highlights)
+   ========================================================= */
+.highlights { padding: 0 0 100px; }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.stat { background: #fff; border: 1px solid var(--base-2); border-radius: var(--radius); padding: 26px; }
+.stat b { display: block; font-size: 36px; font-weight: 800; color: var(--accent); line-height: 1.1; letter-spacing: -.03em; }
+.stat small { display: block; margin-top: 6px; font-size: 14px; color: var(--sub-mute); line-height: 1.5; }
+
+/* =========================================================
+   6. About
+   ========================================================= */
+.about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: start; }
+.about-text p { margin: 0 0 18px; font-size: 17px; }
+.facts { background: #fff; border: 1px solid var(--base-2); border-radius: var(--radius); padding: 28px; }
+.facts dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 12px 20px; font-size: 15px; }
+.facts dt { color: var(--sub-mute); font-weight: 600; }
+.facts dd { margin: 0; color: var(--sub); font-weight: 600; }
+
+/* =========================================================
+   7. 현 직장 — 개요 + 케이스 스터디
+   ========================================================= */
+.role-head {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 20px; align-items: flex-end;
+  padding-bottom: 24px; border-bottom: 1px solid var(--base-2); margin-bottom: 32px;
+}
+.role-head h3 { font-size: 28px; }
+.role-head .role { color: var(--accent-tx); font-weight: 700; margin-top: 6px; }
+.role-head .date { color: var(--sub-mute); font-weight: 600; font-size: 15px; }
+.badge {
+  display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  background: var(--accent); color: #fff; padding: 3px 10px; border-radius: 999px; margin-left: 8px; vertical-align: middle;
+}
+
+.scope { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 56px; }
+.scope-card { background: #fff; border: 1px solid var(--base-2); border-radius: var(--radius); padding: 24px; }
+.scope-card h4 { font-size: 16px; margin-bottom: 14px; }
+.scope-card ul { margin: 0; padding-left: 18px; font-size: 15px; }
+.scope-card li { margin-bottom: 6px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { font-size: 13px; font-weight: 600; padding: 5px 12px; border-radius: 999px; background: var(--base-2); color: var(--sub); }
+.tag small { font-weight: 500; color: var(--sub-mute); margin-left: 4px; }
+
+.cases-title { font-size: 24px; margin-bottom: 24px; }
+.cases { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.case {
+  background: #fff; border: 1px solid var(--base-2); border-radius: var(--radius); padding: 30px;
+  transition: transform .25s, border-color .25s, box-shadow .25s;
+}
+.case:hover { transform: translateY(-4px); border-color: var(--accent-lt); box-shadow: 0 14px 30px rgba(61, 79, 99, .08); }
+.case .client { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-tx); }
+.case h4 { font-size: 21px; margin: 6px 0 14px; }
+.case .metric {
+  display: flex; align-items: baseline; gap: 10px; padding: 14px 16px; margin-bottom: 16px;
+  background: var(--base-3); border-radius: 12px;
+}
+.case .metric b { font-size: 26px; font-weight: 800; color: var(--accent); letter-spacing: -.03em; }
+.case .metric span { font-size: 14px; color: var(--sub-mute); }
+.case ul { margin: 0; padding-left: 18px; font-size: 15px; }
+.case li { margin-bottom: 8px; }
+.case.wide { grid-column: 1 / -1; }
+
+/* =========================================================
+   8. 이전 경력 (타임라인)
+   ========================================================= */
+.timeline { position: relative; padding-left: 32px; }
+.timeline::before { content: ""; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 2px; background: var(--base-2); }
+.job { position: relative; padding-bottom: 44px; }
+.job:last-child { padding-bottom: 0; }
+.job::before {
+  content: ""; position: absolute; left: -32px; top: 8px; width: 14px; height: 14px; border-radius: 50%;
+  background: #fff; border: 3px solid var(--accent);
+}
+.job-head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 16px; align-items: baseline; }
+.job h3 { font-size: 21px; }
+.job .date { font-size: 14px; color: var(--sub-mute); font-weight: 600; }
+.job .role { color: var(--accent-tx); font-weight: 700; font-size: 15px; margin: 4px 0 12px; }
+.job .loc { font-size: 14px; color: var(--sub-mute); font-weight: 500; }
+.job ul { margin: 0; padding-left: 18px; }
+.job li { margin-bottom: 6px; }
+
+/* =========================================================
+   9. Toolkit
+   ========================================================= */
+.tool-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.tool-card {
+  background: #fff; border: 1px solid var(--base-2); border-radius: var(--radius); padding: 28px;
+  transition: transform .25s, border-color .25s;
+}
+.tool-card:hover { transform: translateY(-4px); border-color: var(--accent-lt); }
+.tool-card .icon {
+  width: 44px; height: 44px; border-radius: 12px; background: var(--base-2); color: var(--accent);
+  display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 18px;
+}
+.tool-card h3 { font-size: 19px; margin-bottom: 14px; }
+
+/* =========================================================
+   10. Beyond Work (슬레이트 30% 섹션)
+   ========================================================= */
+.beyond { background: var(--sub); color: #CBD5E0; }
+.beyond h2, .beyond h3 { color: #fff; }
+.beyond .eyebrow { color: var(--accent-lt); }
+.beyond-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.beyond-card { border: 1px solid rgba(255,255,255,.14); border-radius: var(--radius); padding: 28px; }
+.beyond-card .big { font-size: 38px; font-weight: 800; color: var(--accent-lt); line-height: 1; margin-bottom: 12px; letter-spacing: -.03em; }
+.beyond-card h3 { font-size: 19px; margin-bottom: 4px; }
+.beyond-card .meta { font-size: 13px; color: #9AA8B8; margin-bottom: 12px; }
+.beyond-card ul { margin: 0; padding-left: 18px; font-size: 15px; }
+.beyond-card li { margin-bottom: 6px; }
+
+/* =========================================================
+   11. Education + Contact
+   ========================================================= */
+.edu-card {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; align-items: center;
+  background: #fff; border: 1px solid var(--base-2); border-left: 4px solid var(--accent);
+  border-radius: var(--radius); padding: 28px 32px;
+}
+.edu-card h3 { font-size: 22px; }
+.edu-card p { margin: 4px 0 0; color: var(--sub-mute); }
+.edu-card .date { color: var(--sub-mute); font-weight: 600; }
+
+.contact { text-align: center; padding-bottom: 120px; }
+.contact h2 { font-size: clamp(34px, 5vw, 54px); margin-bottom: 16px; }
+.contact h2 em { font-style: normal; color: var(--accent); }
+.contact p { max-width: 540px; margin: 0 auto 36px; font-size: 17px; }
+
+footer { border-top: 1px solid var(--base-2); padding: 28px 0; font-size: 13px; color: var(--sub-mute); text-align: center; }
+
+/* =========================================================
+   12. 스크롤 등장 애니메이션
+   ========================================================= */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.show { opacity: 1; transform: none; }
+
+/* =========================================================
+   13. 반응형 (태블릿 / 모바일)
+   ========================================================= */
+@media (max-width: 960px) {
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .scope, .tool-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 720px) {
+  section { padding: 72px 0; }
+  .container { padding: 0 16px; }
+  .nav ul { display: none; }
+  .hero { padding: 64px 0 80px; }
+  .hero .container, .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .portrait { max-width: 260px; justify-self: start; }
+  .scope, .cases, .tool-grid, .beyond-grid { grid-template-columns: 1fr; }
+  .highlights { padding-bottom: 72px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== 내비게이션 ===== -->
+<nav class="nav">
+  <div class="container">
+    <a href="#top" class="logo">Jeongmin Kim<span>.</span></a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#toolkit">Toolkit</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== Hero ===== -->
+<header class="hero" id="top">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow">International Trade · Supply Chain</span>
+      <h1>Hi, I'm<br><em>Jeongmin</em> Kim.</h1>
+      <p class="lead">From import and customs clearance to distribution across the USMCA region, I keep Asian chemical products flowing to the manufacturers who depend on them, on time and through every disruption. That includes Korean SSBR, NBR, and 6PPD, plus PET resin from Korea, Taiwan, and Vietnam.</p>
+      <div class="btns">
+        <a href="#contact" class="btn btn-primary">Get in Touch</a>
+        <a href="#work" class="btn btn-ghost">See My Work</a>
+      </div>
+    </div>
+    <!-- 사진을 바꾸려면 hero-photo.jpg 파일을 교체하세요 (이 HTML과 같은 폴더) -->
+    <div class="portrait reveal"><img src="hero-photo.jpg" alt="Portrait of Jeongmin Kim"></div>
+  </div>
+</header>
+
+<!-- ===== 핵심 숫자 ===== -->
+<div class="highlights">
+  <div class="container stats">
+    <div class="stat reveal"><b>+60%</b><small>Michelin supply volume growth, 2,500 → 4,000 MT/yr</small></div>
+    <div class="stat reveal"><b>9.3/10</b><small>Supplier satisfaction rating from Michelin</small></div>
+    <div class="stat reveal"><b>2,600 MT</b><small>New annual contract won for Continental's mega plant</small></div>
+    <div class="stat reveal"><b>10</b><small>Product lines across synthetic rubber, rubber chemicals, and plastic resins</small></div>
+  </div>
+</div>
+
+<!-- ===== About ===== -->
+<section id="about" class="alt">
+  <div class="container about-grid">
+    <div class="about-text reveal">
+      <span class="eyebrow">About Me</span>
+      <h2 class="section-title">Economics background,<br>supply chain on the front line.</h2>
+      <p>I studied Economics at the University of Minnesota, and since 2023 I have worked at POSCO International America, supplying Korean synthetic rubber and rubber chemicals from Kumho Petrochemical and Kumho Polychem to manufacturers across North America and Mexico.</p>
+      <p>My work sits where purchasing meets logistics: managing inventory for some of the world's largest tire makers, coordinating manufacturers, forwarders, and customers, and solving problems when shipping lanes, tariffs, or costs suddenly change.</p>
+      <p>Before that, I interned at two of Korea's major public corporations, KEPCO and KOMSCO, working on vendor payments, contract review, international standardization, and market analysis.</p>
+    </div>
+    <div class="facts reveal">
+      <dl>
+        <dt>Based in</dt><dd>Anaheim, California</dd>
+        <dt>Current</dt><dd>POSCO International America</dd>
+        <dt>Focus</dt><dd>Synthetic rubber &amp; chemicals</dd>
+        <dt>Region</dt><dd>North America &amp; Mexico</dd>
+        <dt>Education</dt><dd>B.A. Economics, UMN</dd>
+        <dt>Languages</dt><dd>Korean, English</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 현 직장: POSCO ===== -->
+<section id="work">
+  <div class="container">
+    <span class="eyebrow reveal">Current Work</span>
+    <div class="role-head reveal">
+      <div>
+        <h3>POSCO International America Corp. <span class="badge">Current</span></h3>
+        <div class="role">Sales Assistant Manager, International Trade (Synthetic Rubber &amp; Chemicals)</div>
+      </div>
+      <span class="date">Anaheim, CA · 2023 – Present</span>
+    </div>
+
+    <!-- 업무 범위 -->
+    <div class="scope">
+      <div class="scope-card reveal">
+        <h4>Product Portfolio</h4>
+        <div class="tags">
+          <span class="tag">6PPD <small>KUMANOX-13</small></span>
+          <span class="tag">SSBR <small>SOL-6270</small></span>
+          <span class="tag">BR <small>KBR-820</small></span>
+          <span class="tag">SBS <small>KTR-102 · 104 · 201P</small></span>
+          <span class="tag">EPDM <small>KEP980N · 750F · 370F</small></span>
+          <span class="tag">NB-Latex</span>
+          <span class="tag">NBR</span>
+          <span class="tag">HIPS</span>
+          <span class="tag">ABS</span>
+          <!-- PET 수량 확인되면 ? 교체 -->
+          <span class="tag">PET Resin <small>KR · TW · VN · ? MT</small></span>
+        </div>
+      </div>
+      <div class="scope-card reveal">
+        <h4>Key Customers</h4>
+        <div class="tags">
+          <span class="tag">Michelin</span>
+          <span class="tag">Continental</span>
+          <span class="tag">Goodyear</span>
+          <span class="tag">BASSTECH</span>
+          <span class="tag">Corrie MacColl</span>
+          <span class="tag">Cook Chemical</span>
+          <span class="tag">WARCO</span>
+          <span class="tag">Maxter Healthcare</span>
+        </div>
+      </div>
+      <div class="scope-card reveal">
+        <h4>What I Do</h4>
+        <ul>
+          <li>Develop new accounts in North America and Mexico</li>
+          <li>Negotiate pricing with customers</li>
+          <li>Track logistics and customs end to end</li>
+          <li>Run warehouses in multiple regions for JIT delivery</li>
+          <li>Investigate and resolve quality issues</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 케이스 스터디 -->
+    <h3 class="cases-title reveal">Selected Work</h3>
+    <div class="cases">
+
+      <div class="case wide reveal">
+        <span class="client">Digital Transformation · Company-wide Task Force</span>
+        <h4>One board for every order, from factory to final delivery</h4>
+        <div class="metric"><b>11 modules</b><span>company-wide DX program · six-member task force</span></div>
+        <ul>
+          <li>Served on the six-member task force digitizing logistics, customs, and inventory operations, working from development direction through testing on modules including the Integrated Status Board (ISB), Supply Chain Planning (SCP), Warehouse Inventory Management (WIM), and US Entry Management</li>
+          <li>Helped break operations into 11 modules and set a three-phase standard (analysis and design, development, unit testing) with a master schedule</li>
+          <li>Represented the business to the external development vendor, handling requirements, feasibility checks, testing, and audits, and supported user training and change management</li>
+          <li>For the ISB, consolidated order details, customs and duties, sales, credit/debit, inventory, and incidental costs that had been tracked separately by each business unit into one real-time board, with views tailored to each unit</li>
+          <li>Set up one view across factory release, vessel loading, customs clearance, discharge, and distribution or direct delivery; now partially launched, and expected to let one person handle status tracking that would otherwise take two</li>
+        </ul>
+      </div>
+
+      <div class="case wide reveal">
+        <span class="client">2026 Portfolio · First Three Quarters</span>
+        <h4>Growing existing accounts across rubber, chemicals, and resins</h4>
+        <div class="metric"><b>~$45M</b><span>transaction value · 18,000+ MT across five material groups</span></div>
+        <ul>
+          <li>Doubled synthetic rubber volume and revenue quarter over quarter in Q3, to about 3,700 MT and $10M</li>
+          <li>Opened SBS sales at an existing account, reaching about 1,600 MT and $3.8M in the first quarter of supply, while scaling NBR to the same account about 6.6x from Q1 to Q3</li>
+          <li>Launched a new SSBR consignment program with a global tire manufacturer, securing about 530 MT and setting up local warehousing and JIT delivery</li>
+          <li>Restored 6PPD supply to a global tire manufacturer's Canadian operations after a 2025 suspension</li>
+          <li>Raised SBS pricing 19% per ton during a 28% volume decline at a key account, limiting the revenue decline to 14%</li>
+          <li>Increased HIPS/ABS supply 88% quarter over quarter to about 2,400 MT while reducing long-term inventory</li>
+        </ul>
+      </div>
+
+      <div class="case reveal">
+        <span class="client">Michelin · 6PPD</span>
+        <h4>Stable supply through global disruption</h4>
+        <div class="metric"><b>2,500 → 4,000 MT</b><span>annual volume, 2023 → 2026</span></div>
+        <ul>
+          <li>Grew annual contract volume from 2,500 MT (2023) to 2,800 MT (2024), 3,000 MT (2025), and 4,000 MT (2026)</li>
+          <li>Kept supply stable through the Red Sea crisis, Panama Canal restrictions, oil price spikes, and freight and trucking cost surges, while competing suppliers struggled to meet Michelin's requirements</li>
+          <li>Built a multi-forwarder network across Korea, China, and Taiwan under service contracts, securing vessel space and rates</li>
+          <li>When Cape of Good Hope rerouting delayed back-to-back shipments, obtained actual consumption data from three Michelin plants and managed inventory on 3–4 day cycles until new stock arrived</li>
+        </ul>
+      </div>
+
+      <div class="case reveal">
+        <span class="client">Michelin · VMI</span>
+        <h4>Vendor Managed Inventory with safety stock</h4>
+        <div class="metric"><b>9.3 / 10</b><span>supplier satisfaction rating</span></div>
+        <ul>
+          <li>Operated a VMI program under DDP terms, keeping two months of safety stock in South Carolina, North Carolina, and Texas warehouses</li>
+          <li>Earned a 9.3/10 rating in Michelin's supplier evaluation</li>
+          <li>Responded to 2025 U.S. tariff increases by designing a cost-sharing structure among the customer, POSCO International, and the manufacturer, creating a win-win for all three parties</li>
+        </ul>
+      </div>
+
+      <div class="case reveal">
+        <span class="client">Continental · 6PPD</span>
+        <h4>Emergency supply that won a new plant</h4>
+        <div class="metric"><b>2,600 MT / yr</b><span>new contract · 12 containers per month</span></div>
+        <ul>
+          <li>Continental received 6PPD directly at its plants under DDP terms, without warehousing, and faced an urgent shortage</li>
+          <li>Reallocated Michelin-dedicated inventory after reviewing delivery dates and pricing in detail</li>
+          <li>Confirmed with the manufacturer that product properties and packaging were identical, and reviewed Continental's material-feeding process to verify the slightly different packaging would work</li>
+          <li>Recognized for proactive response and customer service, leading to a new contract for Continental's second, mega-scale plant</li>
+        </ul>
+      </div>
+
+      <div class="case reveal">
+        <span class="client">WARCO · EPDM &amp; NBR</span>
+        <h4>A mixed container that won competitor share</h4>
+        <div class="metric"><b>70 / 30</b><span>NBR–EPDM mixed container</span></div>
+        <ul>
+          <li>WARCO, a small plant using 1–2 containers of NBR from a competing supplier and 0.5–1 container of EPDM per month, kept ending up with leftover EPDM</li>
+          <li>Proposed a 70/30 NBR–EPDM mixed container matched to its actual consumption ratio, made possible because Kumho Petrochemical (NBR) and Kumho Polychem (EPDM) are group affiliates</li>
+          <li>Coordinated two-site loading between Ulsan and Yeosu, solving errors caused by the two companies' separate shipping systems</li>
+          <li>Won over a significant share of WARCO's NBR volume from a competing supplier, earning internal recognition</li>
+        </ul>
+      </div>
+
+      <div class="case wide reveal">
+        <span class="client">Quality · NB-Latex</span>
+        <h4>Root-cause analysis of container leakage</h4>
+        <ul>
+          <li>Investigated NB-Latex leakage found inside a container, determining whether the damage occurred at sea or during port discharge, and developed solutions with the manufacturer, carrier, and customer (Maxter Healthcare)</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== 이전 경력 ===== -->
+<section id="experience" class="alt">
+  <div class="container">
+    <span class="eyebrow reveal">Experience</span>
+    <h2 class="section-title reveal">Before POSCO</h2>
+    <p class="section-lead reveal">Internships at Korean public corporations and work in the U.S. during university.</p>
+
+    <div class="timeline">
+      <div class="job reveal">
+        <div class="job-head">
+          <h3>Bell Museum</h3>
+          <span class="date">Feb 2022 – May 2023</span>
+        </div>
+        <div class="role">Visitor Services Associate <span class="loc">· Saint Paul, MN</span></div>
+        <ul>
+          <li>Led greeting and educating visitors, drawing on extensive knowledge of exhibits and historical and environmental topics, and handled gift shop sales and ticketing</li>
+          <li>Managed day-to-day museum operations, including opening on schedule and giving tours to visitors</li>
+        </ul>
+      </div>
+
+      <div class="job reveal">
+        <div class="job-head">
+          <h3>Korea Electric Power Corporation (KEPCO)</h3>
+          <span class="date">Mar 2021 – Jun 2021</span>
+        </div>
+        <div class="role">Intern, Customer Management Department <span class="loc">· Busan, South Korea</span></div>
+        <ul>
+          <li>Established and implemented a "QR-code distribution board" project, reducing customers' electricity usage and fare-checking time by 30% and raising customer satisfaction by 20%</li>
+          <li>Developed and implemented a more efficient complaint response procedure, improving the satisfaction score by 35%</li>
+          <li>Identified potential risks in a subsidiary by reviewing business documents and contracts and conducting desk and field research</li>
+          <li>Worked with 100+ vendors to ensure all invoices were paid on time</li>
+        </ul>
+      </div>
+
+      <div class="job reveal">
+        <div class="job-head">
+          <h3>Korea Minting and Security Printing Corp. (KOMSCO)</h3>
+          <span class="date">Jul 2020 – Jan 2021</span>
+        </div>
+        <div class="role">Intern, Global Strategy Consulting Department <span class="loc">· Daejeon, South Korea</span></div>
+        <ul>
+          <li>Assisted an international management standardization project by communicating with each department and entity</li>
+          <li>Developed and executed a consolidated management strategy based on an ISO standard (14298-2021) for implementation across departments</li>
+          <li>Organized and facilitated Visa qualification meetings for new payment system acquisitions, and managed defects identified during Visa standardization</li>
+          <li>Conducted market research and feasibility analysis using financial statements, industry analysis, and competitor analysis in Excel, R, and Python</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Toolkit ===== -->
+<section id="toolkit">
+  <div class="container">
+    <span class="eyebrow reveal">Toolkit</span>
+    <h2 class="section-title reveal">What I work with</h2>
+    <p class="section-lead reveal">The terms, systems, and tools I use every day to move materials across borders.</p>
+    <div class="tool-grid">
+      <div class="tool-card reveal">
+        <div class="icon">◆</div>
+        <h3>Trade &amp; Incoterms</h3>
+        <div class="tags">
+          <span class="tag">DDP</span><span class="tag">DAP</span><span class="tag">FCA</span>
+          <span class="tag">CIP</span><span class="tag">CIF</span><span class="tag">FOB</span>
+          <span class="tag">Customs Tracking</span><span class="tag">Service Contracts</span>
+        </div>
+      </div>
+      <div class="tool-card reveal">
+        <div class="icon">▲</div>
+        <h3>Supply Chain</h3>
+        <div class="tags">
+          <span class="tag">VMI</span><span class="tag">Safety Stock</span><span class="tag">JIT Delivery</span>
+          <span class="tag">Warehouse Operations</span><span class="tag">Forwarder Management</span>
+          <span class="tag">Quality Claims</span>
+        </div>
+      </div>
+      <div class="tool-card reveal">
+        <div class="icon">●</div>
+        <h3>Systems &amp; Analysis</h3>
+        <div class="tags">
+          <span class="tag">SAP</span><span class="tag">Oracle ERP</span><span class="tag">Salesforce</span>
+          <span class="tag">Microsoft Office</span><span class="tag">Excel</span><span class="tag">R</span><span class="tag">Python</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Beyond Work (슬레이트 30% 섹션) ===== -->
+<section class="beyond">
+  <div class="container">
+    <span class="eyebrow reveal">Beyond Work</span>
+    <h2 class="section-title reveal">A little more about me</h2>
+    <div class="beyond-grid">
+      <div class="beyond-card reveal">
+        <div class="big">5 · 2 · 2</div>
+        <h3>Korea Para-Swimming Federation</h3>
+        <div class="meta">Team Leader, Swimming Athlete · Daejeon · Mar 2015 – Apr 2016</div>
+        <ul>
+          <li>Improved team swimming performance by 20% by managing the competition schedule for 10+ team members and establishing daily nutrition, physical, and mental conditioning routines</li>
+          <li>Won 5 gold, 2 silver, and 2 bronze medals in the 50m, 100m, and 400m freestyle at national and provincial disability swimming competitions</li>
+        </ul>
+      </div>
+      <div class="beyond-card reveal">
+        <div class="big">90+</div>
+        <h3>Korean International Student Organization</h3>
+        <div class="meta">President, Treasurer · UMN · Aug 2019 – May 2023</div>
+        <ul>
+          <li>Spearheaded planning of a welcome session for 90+ freshman and transfer students</li>
+          <li>Identified and contacted sponsors and supporters to facilitate club growth</li>
+          <li>Organized a meeting for 20+ alumni and an alumni discussion panel, achieving the highest attendance rate through social media promotion</li>
+        </ul>
+      </div>
+      <div class="beyond-card reveal">
+        <div class="big">16+</div>
+        <h3>Productive Surplus</h3>
+        <div class="meta">President · UMN · Aug 2019 – May 2023</div>
+        <ul>
+          <li>Facilitated weekly meetings of 16+ members for discussions and debates on international issues</li>
+          <li>Implemented a "UMN Feedback Board," collecting students' needs and feedback for the building maintenance department and faculty</li>
+          <li>Led the "Minnesota Living Tips" and "Road Trip Maps" projects to share practical information for living well in Minnesota</li>
+        </ul>
+      </div>
+      <div class="beyond-card reveal">
+        <div class="big">−50%</div>
+        <h3>Climbing Team 'Crux Ducks'</h3>
+        <div class="meta">Treasurer · UMN · Sep 2017 – May 2019</div>
+        <ul>
+          <li>Implemented centralized purchasing, reducing team costs by 50%</li>
+          <li>Organized "Climbing Day" by reserving venues and equipment for outdoor climbing at various locations</li>
+          <li>Reviewed and analyzed operating budgets every four weeks</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Education ===== -->
+<section>
+  <div class="container">
+    <span class="eyebrow reveal">Education</span>
+    <div class="edu-card reveal">
+      <div>
+        <h3>University of Minnesota, Twin Cities</h3>
+        <p>Bachelor of Arts, Economics</p>
+      </div>
+      <span class="date">Minneapolis, MN · May 2023</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Contact ===== -->
+<section class="contact alt" id="contact">
+  <div class="container reveal">
+    <span class="eyebrow">Contact</span>
+    <h2>Let's <em>work</em> together.</h2>
+    <p>Open to procurement and purchasing roles in manufacturing. I'd be glad to hear from you.</p>
+    <div class="btns" style="justify-content:center">
+      <a href="mailto:minminkim0000@gmail.com" class="btn btn-primary">Email Me</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Jeongmin Kim</footer>
+
+<script>
+// 화면에 들어온 요소에 .show를 붙여 서서히 나타나게 합니다.
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e) => {
+    if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+</script>
+</body>
+</html>
