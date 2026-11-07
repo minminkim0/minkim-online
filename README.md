@@ -9,11 +9,13 @@ Live: https://minkim.online
 | File | Purpose |
 |---|---|
 | `index.html` | The whole site: HTML, CSS (Airy Sky tone and manner), and a small scroll-reveal script |
-| `hero-photo.jpg` | Hero portrait |
+| `hero-photo.jpg` | Hero portrait (also used as the link preview image) |
+| `favicon.svg` | Browser tab icon |
+| `robots.txt`, `sitemap.xml` | Tell search engines what to crawl |
 
 ## Deployment
 
-Hosted on Vercel. Every merge into `main` is deployed to https://minkim.online.
+Hosted on Vercel at https://minkim.online. Deploy from this folder with `npx vercel@latest deploy --prod`.
 
 ## Workflow
 
